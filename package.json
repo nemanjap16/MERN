@@ -7,7 +7,7 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm run start --prefix frontend",
-    "heroku-prebuild": "npm run build --prefix frontend"
+    "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm run install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Nemanja Pantelic",
   "license": "MIT",
