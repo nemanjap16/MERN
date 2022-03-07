@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
 // Protect routes
@@ -33,7 +32,7 @@ const protectRoute = asyncHandler(async (req, res, next) => {
 const authMiddleware = async (req, res, next) => {
   try {
     const token = req.header("Authorization").replace("Bearer ", "");
-    const decoded = jwt.verify(token, "thisismynewcourse");
+    const decoded = jwt.verify(token, "secret");
   } catch (error) {
     return res.status(401).json({ message: "Unauthorized" });
   }
